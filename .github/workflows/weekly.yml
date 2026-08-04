@@ -1,1 +1,33 @@
-name: Weekly Bot
+name: Enviar reporte semanal por WhatsApp
+ 
+on:
+  schedule:
+    # Todos los lunes a las 08:00 UTC (~09:00-10:00 hora de España según horario de verano)
+    - cron: "0 8 * * 1"
+  workflow_dispatch: {}   # permite lanzarlo manualmente desde la pestaña Actions para probar
+ 
+jobs:
+  send-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+ 
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+ 
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+ 
+      - name: Ejecutar bot
+        env:
+          SHEET_URL: ${{ secrets.SHEET_URL }}
+          WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
+          PHONE_NUMBER_ID: ${{ secrets.PHONE_NUMBER_ID }}
+          RECIPIENT_NUMBER: ${{ secrets.RECIPIENT_NUMBER }}
+          TEMPLATE_NAME: ${{ secrets.TEMPLATE_NAME }}
+          TEMPLATE_LANG: ${{ secrets.TEMPLATE_LANG }}
+        run: python main.py
+ 
