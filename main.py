@@ -110,7 +110,5 @@ def main() -> None:
     media_id = upload_media(IMAGE_PATH)
     send_template_with_image(media_id)
     print("Mensaje enviado correctamente.")
-
-
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#    main()
