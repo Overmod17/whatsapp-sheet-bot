@@ -3,7 +3,7 @@ name: Enviar reporte semanal por WhatsApp
 on:
   schedule:
     # Todos los lunes a las 08:00 UTC (~09:00-10:00 hora de España según horario de verano)
-    - cron: "35 3 * * 3"
+    - cron: "35 1 * * 3"
   workflow_dispatch: {}   # permite lanzarlo manualmente desde la pestaña Actions para probar
  
 jobs:
