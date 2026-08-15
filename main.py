@@ -17,7 +17,7 @@ TEMPLATE_LANG = os.environ.get("TEMPLATE_LANG", "es")
 
 GRAPH_API_VERSION = "v21.0"
 IMAGE_PATH = "reporte.png"
-MAX_ROWS = 30  # límite para que la imagen no salga gigante si el sheet crece mucho
+MAX_ROWS = 32  # límite para que la imagen no salga gigante si el sheet crece mucho
 
 
 def fetch_sheet_data() -> pd.DataFrame:
